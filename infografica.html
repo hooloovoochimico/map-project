@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ridisegno delle province — infografica</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#f7f7f5;--card:#fff;--line:#e3e3e0;
+--accent:#ff7f00;--red:#d73027;--green:#2ca25f;--blue:#1f78b4}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+color:var(--fg);background:var(--bg)}
+.wrap{max-width:980px;margin:0 auto;padding:28px 20px 60px}
+header h1{font-size:30px;margin:0 0 4px}
+header p{margin:0 0 6px;color:var(--muted)}
+.kpis{display:flex;gap:14px;flex-wrap:wrap;margin:22px 0}
+.kpi{flex:1;min-width:160px;background:var(--card);border:1px solid var(--line);
+border-radius:10px;padding:16px 18px}
+.kpi .v{font-size:34px;font-weight:700;line-height:1}
+.kpi .l{color:var(--muted);font-size:13px;margin-top:6px}
+.kpi.accent .v{color:var(--accent)}
+.kpi.red .v{color:var(--red)}
+.callout{background:#fff7ed;border:1px solid #fed7aa;border-left:5px solid var(--accent);
+border-radius:8px;padding:14px 18px;margin:18px 0}
+.callout b{color:#9a3412}
+section{margin:30px 0}
+section h2{font-size:19px;margin:0 0 4px}
+section .sub{color:var(--muted);font-size:13px;margin:0 0 12px}
+table{width:100%;border-collapse:collapse;background:var(--card);
+border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:14px}
+th,td{padding:7px 9px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f0f0ec;font-weight:600;font-size:12px;text-transform:uppercase;color:var(--muted)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+td.nome{font-weight:600}
+.sig{color:var(--muted);font-size:12px}
+.arrow{color:var(--muted);text-align:center}
+.gain{color:var(--green);font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:720px){.two{grid-template-columns:1fr}.kpi .v{font-size:28px}}
+.bar-row{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:13px}
+.bar-lbl{width:175px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{flex:1;height:15px;background:#ececea;border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px}
+.bar-val{width:42px;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+footer{margin-top:34px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:12px}
+</style></head><body><div class="wrap">
+
+<a href="index.html"
+   style="position:fixed;top:14px;left:14px;z-index:9999;
+          background:#ff7f00;color:#fff;padding:10px 18px;
+          border-radius:8px;text-decoration:none;font:600 14px/1 Arial;
+          box-shadow:2px 2px 6px rgba(0,0,0,.35);transition:background .2s"
+   onmouseover="this.style.background='#e67300'"
+   onmouseout="this.style.background='#ff7f00'">
+   &#8592; Mappa
+</a>
+
+<header>
+  <h1>Ridisegno delle province italiane</h1>
+  <p>Se ogni comune andasse alla provincia col capoluogo più vicino (Voronoi sui 110 capoluoghi, distanza in linea d'aria)</p>
+  <p>Fonte: confini ISTAT 2026 · capoluoghi geocodificati via Wikidata</p>
+</header>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">7.896</div><div class="l">comuni italiani totali</div></div>
+  <div class="kpi accent"><div class="v">2.130</div><div class="l">cambiano provincia (27.0%)</div></div>
+  <div class="kpi red"><div class="v">682</div><div class="l">cambiano anche regione (8.6%)</div></div>
+</div>
+
+<div class="callout">
+  <b>Caso di studio — Robbio.</b> In provincia di Pavia (Lombardia), dista 45 km da Pavia
+  ma solo 15 km da Vercelli (Piemonte). Nel ridisegno passa alla
+  <b>provincia di Vercelli</b>, cambiando regione: un esempio di come i confini attuali non seguano la vicinanza reale.
+</div>
+
+<section>
+  <h2>Top spostamenti per risparmio di chilometri</h2>
+  <p class="sub">Comuni che, passando al capoluogo più vicino, accorciano maggiormente la distanza dal capoluogo di provincia</p>
+  <table>
+    <tr><th>Comune</th><th>Da provincia</th><th></th><th>A provincia</th>
+    <th class="num">Km prima</th><th class="num">Km dopo</th><th class="num">Risparmio</th></tr>
+    <tr><td class='nome'>Castel di Lucio</td><td>Messina <span class='sig'>(ME)</span></td><td class='arrow'>→</td><td>Enna <span class='sig'>(EN)</span></td><td class='num'>116</td><td class='num'>35</td><td class='num gain'>−81</td></tr><tr><td class='nome'>Tusa</td><td>Messina <span class='sig'>(ME)</span></td><td class='arrow'>→</td><td>Enna <span class='sig'>(EN)</span></td><td class='num'>117</td><td class='num'>46</td><td class='num gain'>−71</td></tr><tr><td class='nome'>Pettineo</td><td>Messina <span class='sig'>(ME)</span></td><td class='arrow'>→</td><td>Enna <span class='sig'>(EN)</span></td><td class='num'>113</td><td class='num'>43</td><td class='num gain'>−70</td></tr><tr><td class='nome'>Mistretta</td><td>Messina <span class='sig'>(ME)</span></td><td class='arrow'>→</td><td>Enna <span class='sig'>(EN)</span></td><td class='num'>107</td><td class='num'>39</td><td class='num gain'>−69</td></tr><tr><td class='nome'>Castel di Sangro</td><td>L'Aquila <span class='sig'>(AQ)</span></td><td class='arrow'>→</td><td>Isernia <span class='sig'>(IS)</span></td><td class='num'>89</td><td class='num'>21</td><td class='num gain'>−68</td></tr><tr><td class='nome'>Gangi</td><td>Palermo <span class='sig'>(PA)</span></td><td class='arrow'>→</td><td>Enna <span class='sig'>(EN)</span></td><td class='num'>86</td><td class='num'>20</td><td class='num gain'>−66</td></tr><tr><td class='nome'>Alfedena</td><td>L'Aquila <span class='sig'>(AQ)</span></td><td class='arrow'>→</td><td>Isernia <span class='sig'>(IS)</span></td><td class='num'>88</td><td class='num'>22</td><td class='num gain'>−65</td></tr><tr><td class='nome'>Capizzi</td><td>Messina <span class='sig'>(ME)</span></td><td class='arrow'>→</td><td>Enna <span class='sig'>(EN)</span></td><td class='num'>102</td><td class='num'>37</td><td class='num gain'>−65</td></tr><tr><td class='nome'>Motta d'Affermo</td><td>Messina <span class='sig'>(ME)</span></td><td class='arrow'>→</td><td>Enna <span class='sig'>(EN)</span></td><td class='num'>111</td><td class='num'>47</td><td class='num gain'>−64</td></tr><tr><td class='nome'>Alimena</td><td>Palermo <span class='sig'>(PA)</span></td><td class='arrow'>→</td><td>Enna <span class='sig'>(EN)</span></td><td class='num'>82</td><td class='num'>18</td><td class='num gain'>−64</td></tr><tr><td class='nome'>Reitano</td><td>Messina <span class='sig'>(ME)</span></td><td class='arrow'>→</td><td>Enna <span class='sig'>(EN)</span></td><td class='num'>109</td><td class='num'>47</td><td class='num gain'>−62</td></tr><tr><td class='nome'>Scontrone</td><td>L'Aquila <span class='sig'>(AQ)</span></td><td class='arrow'>→</td><td>Isernia <span class='sig'>(IS)</span></td><td class='num'>85</td><td class='num'>24</td><td class='num gain'>−61</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Cambi che attraversano i confini regionali</h2>
+  <p class="sub">Top comuni il cui capoluogo più vicino sta in un'altra regione</p>
+  <table>
+    <tr><th>Comune</th><th>Da (regione/prov.)</th><th></th><th>A (regione/prov.)</th>
+    <th class="num">Km prima</th><th class="num">Km dopo</th><th class="num">Risparmio</th></tr>
+    <tr><td class='nome'>Castel di Sangro</td><td>Abruzzo<br><span class='sig'>L'Aquila</span></td><td class='arrow'>→</td><td>Molise<br><span class='sig'>Isernia</span></td><td class='num'>89</td><td class='num'>21</td><td class='num gain'>−68</td></tr><tr><td class='nome'>Alfedena</td><td>Abruzzo<br><span class='sig'>L'Aquila</span></td><td class='arrow'>→</td><td>Molise<br><span class='sig'>Isernia</span></td><td class='num'>88</td><td class='num'>22</td><td class='num gain'>−65</td></tr><tr><td class='nome'>Scontrone</td><td>Abruzzo<br><span class='sig'>L'Aquila</span></td><td class='arrow'>→</td><td>Molise<br><span class='sig'>Isernia</span></td><td class='num'>85</td><td class='num'>24</td><td class='num gain'>−61</td></tr><tr><td class='nome'>Barrea</td><td>Abruzzo<br><span class='sig'>L'Aquila</span></td><td class='arrow'>→</td><td>Molise<br><span class='sig'>Isernia</span></td><td class='num'>81</td><td class='num'>28</td><td class='num gain'>−53</td></tr><tr><td class='nome'>Ateleta</td><td>Abruzzo<br><span class='sig'>L'Aquila</span></td><td class='arrow'>→</td><td>Molise<br><span class='sig'>Isernia</span></td><td class='num'>84</td><td class='num'>31</td><td class='num gain'>−53</td></tr><tr><td class='nome'>Montesano sulla Marcellana</td><td>Campania<br><span class='sig'>Salerno</span></td><td class='arrow'>→</td><td>Basilicata<br><span class='sig'>Potenza</span></td><td class='num'>94</td><td class='num'>42</td><td class='num gain'>−52</td></tr><tr><td class='nome'>Roccaraso</td><td>Abruzzo<br><span class='sig'>L'Aquila</span></td><td class='arrow'>→</td><td>Molise<br><span class='sig'>Isernia</span></td><td class='num'>80</td><td class='num'>29</td><td class='num gain'>−51</td></tr><tr><td class='nome'>Padula</td><td>Campania<br><span class='sig'>Salerno</span></td><td class='arrow'>→</td><td>Basilicata<br><span class='sig'>Potenza</span></td><td class='num'>85</td><td class='num'>35</td><td class='num gain'>−50</td></tr><tr><td class='nome'>Sala Consilina</td><td>Campania<br><span class='sig'>Salerno</span></td><td class='arrow'>→</td><td>Basilicata<br><span class='sig'>Potenza</span></td><td class='num'>78</td><td class='num'>31</td><td class='num gain'>−48</td></tr><tr><td class='nome'>Rivisondoli</td><td>Abruzzo<br><span class='sig'>L'Aquila</span></td><td class='arrow'>→</td><td>Molise<br><span class='sig'>Isernia</span></td><td class='num'>79</td><td class='num'>32</td><td class='num gain'>−47</td></tr><tr><td class='nome'>Casalbuono</td><td>Campania<br><span class='sig'>Salerno</span></td><td class='arrow'>→</td><td>Basilicata<br><span class='sig'>Potenza</span></td><td class='num'>94</td><td class='num'>47</td><td class='num gain'>−47</td></tr><tr><td class='nome'>Buonabitacolo</td><td>Campania<br><span class='sig'>Salerno</span></td><td class='arrow'>→</td><td>Basilicata<br><span class='sig'>Potenza</span></td><td class='num'>85</td><td class='num'>42</td><td class='num gain'>−44</td></tr>
+  </table>
+</section>
+
+<div class="two">
+<section>
+  <h2>Province che guadagnano comuni</h2>
+  <p class="sub">Saldo positivo (comuni in entrata − in uscita)</p>
+  <div class="bar-row"><span class="bar-lbl">Biella (BI)</span><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:#2ca25f"></div></div><span class="bar-val">+116</span></div><div class="bar-row"><span class="bar-lbl">Asti (AT)</span><div class="bar-track"><div class="bar-fill" style="width:64.7%;background:#2ca25f"></div></div><span class="bar-val">+75</span></div><div class="bar-row"><span class="bar-lbl">Isernia (IS)</span><div class="bar-track"><div class="bar-fill" style="width:64.7%;background:#2ca25f"></div></div><span class="bar-val">+75</span></div><div class="bar-row"><span class="bar-lbl">Potenza (PZ)</span><div class="bar-track"><div class="bar-fill" style="width:56.9%;background:#2ca25f"></div></div><span class="bar-val">+66</span></div><div class="bar-row"><span class="bar-lbl">Verbano-Cusio-Ossola (VB)</span><div class="bar-track"><div class="bar-fill" style="width:52.6%;background:#2ca25f"></div></div><span class="bar-val">+61</span></div><div class="bar-row"><span class="bar-lbl">Lecco (LC)</span><div class="bar-track"><div class="bar-fill" style="width:48.3%;background:#2ca25f"></div></div><span class="bar-val">+56</span></div><div class="bar-row"><span class="bar-lbl">Vibo Valentia (VV)</span><div class="bar-track"><div class="bar-fill" style="width:45.7%;background:#2ca25f"></div></div><span class="bar-val">+53</span></div><div class="bar-row"><span class="bar-lbl">Lodi (LO)</span><div class="bar-track"><div class="bar-fill" style="width:44.0%;background:#2ca25f"></div></div><span class="bar-val">+51</span></div>
+</section>
+<section>
+  <h2>Province che perdono comuni</h2>
+  <p class="sub">Saldo negativo</p>
+  <div class="bar-row"><span class="bar-lbl">Cuneo (CN)</span><div class="bar-track"><div class="bar-fill" style="width:87.9%;background:#d73027"></div></div><span class="bar-val">-102</span></div><div class="bar-row"><span class="bar-lbl">Milano (MI)</span><div class="bar-track"><div class="bar-fill" style="width:59.5%;background:#d73027"></div></div><span class="bar-val">-69</span></div><div class="bar-row"><span class="bar-lbl">Torino (TO)</span><div class="bar-track"><div class="bar-fill" style="width:55.2%;background:#d73027"></div></div><span class="bar-val">-64</span></div><div class="bar-row"><span class="bar-lbl">Bergamo (BG)</span><div class="bar-track"><div class="bar-fill" style="width:51.7%;background:#d73027"></div></div><span class="bar-val">-60</span></div><div class="bar-row"><span class="bar-lbl">Salerno (SA)</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#d73027"></div></div><span class="bar-val">-58</span></div><div class="bar-row"><span class="bar-lbl">Roma (RM)</span><div class="bar-track"><div class="bar-fill" style="width:44.8%;background:#d73027"></div></div><span class="bar-val">-52</span></div><div class="bar-row"><span class="bar-lbl">Alessandria (AL)</span><div class="bar-track"><div class="bar-fill" style="width:42.2%;background:#d73027"></div></div><span class="bar-val">-49</span></div><div class="bar-row"><span class="bar-lbl">Brescia (BS)</span><div class="bar-track"><div class="bar-fill" style="width:39.7%;background:#d73027"></div></div><span class="bar-val">-46</span></div>
+</section>
+</div>
+
+<section>
+  <h2>Saldo di comuni per regione</h2>
+  <p class="sub">Solo i trasferimenti cross-regione muovono il saldo; rosso = regione perde comuni, verde = ne guadagna</p>
+  <div class="bar-row"><span class="bar-lbl">Campania</span><div class="bar-track"><div class="bar-fill" style="width:94.4%;background:#d73027"></div></div><span class="bar-val">-102</span></div><div class="bar-row"><span class="bar-lbl">Lombardia</span><div class="bar-track"><div class="bar-fill" style="width:88.0%;background:#d73027"></div></div><span class="bar-val">-95</span></div><div class="bar-row"><span class="bar-lbl">Abruzzo</span><div class="bar-track"><div class="bar-fill" style="width:64.8%;background:#d73027"></div></div><span class="bar-val">-70</span></div><div class="bar-row"><span class="bar-lbl">Veneto</span><div class="bar-track"><div class="bar-fill" style="width:34.3%;background:#d73027"></div></div><span class="bar-val">-37</span></div><div class="bar-row"><span class="bar-lbl">Puglia</span><div class="bar-track"><div class="bar-fill" style="width:13.0%;background:#d73027"></div></div><span class="bar-val">-14</span></div><div class="bar-row"><span class="bar-lbl">Valle d'Aosta/Vallée d'Aoste</span><div class="bar-track"><div class="bar-fill" style="width:6.5%;background:#d73027"></div></div><span class="bar-val">-7</span></div><div class="bar-row"><span class="bar-lbl">Marche</span><div class="bar-track"><div class="bar-fill" style="width:4.6%;background:#d73027"></div></div><span class="bar-val">-5</span></div><div class="bar-row"><span class="bar-lbl">Sicilia</span><div class="bar-track"><div class="bar-fill" style="width:2.8%;background:#d73027"></div></div><span class="bar-val">-3</span></div><div class="bar-row"><span class="bar-lbl">Calabria</span><div class="bar-track"><div class="bar-fill" style="width:2.8%;background:#d73027"></div></div><span class="bar-val">-3</span></div><div class="bar-row"><span class="bar-lbl">Umbria</span><div class="bar-track"><div class="bar-fill" style="width:0.9%;background:#d73027"></div></div><span class="bar-val">-1</span></div><div class="bar-row"><span class="bar-lbl">Trentino-Alto Adige/Südtirol</span><div class="bar-track"><div class="bar-fill" style="width:0.9%;background:#d73027"></div></div><span class="bar-val">-1</span></div><div class="bar-row"><span class="bar-lbl">Lazio</span><div class="bar-track"><div class="bar-fill" style="width:0.9%;background:#d73027"></div></div><span class="bar-val">-1</span></div><div class="bar-row"><span class="bar-lbl">Toscana</span><div class="bar-track"><div class="bar-fill" style="width:7.4%;background:#2ca25f"></div></div><span class="bar-val">+8</span></div><div class="bar-row"><span class="bar-lbl">Emilia-Romagna</span><div class="bar-track"><div class="bar-fill" style="width:12.0%;background:#2ca25f"></div></div><span class="bar-val">+13</span></div><div class="bar-row"><span class="bar-lbl">Friuli-Venezia Giulia</span><div class="bar-track"><div class="bar-fill" style="width:17.6%;background:#2ca25f"></div></div><span class="bar-val">+19</span></div><div class="bar-row"><span class="bar-lbl">Piemonte</span><div class="bar-track"><div class="bar-fill" style="width:21.3%;background:#2ca25f"></div></div><span class="bar-val">+23</span></div><div class="bar-row"><span class="bar-lbl">Basilicata</span><div class="bar-track"><div class="bar-fill" style="width:76.9%;background:#2ca25f"></div></div><span class="bar-val">+83</span></div><div class="bar-row"><span class="bar-lbl">Liguria</span><div class="bar-track"><div class="bar-fill" style="width:78.7%;background:#2ca25f"></div></div><span class="bar-val">+85</span></div><div class="bar-row"><span class="bar-lbl">Molise</span><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:#2ca25f"></div></div><span class="bar-val">+108</span></div>
+</section>
+
+<footer>
+  Metodologia: per ogni comune (centro del poligono) si seleziona il capoluogo di provincia più vicino
+  in linea d'aria (haversine). Le regioni restano invariate; le nuove province possono attraversarle.
+  Su 110 province, 8 a capoluogo multiplo (Forlì-Cesena, Pesaro-Urbino, Massa-Carrara, BAT, Olbia-Tempio,
+  Ogliastra, Medio Campidano, Carbonia-Iglesias) sono ridotte a un capoluogo unico. Distanze indicate in km.
+</footer>
+
+</div></body></html>

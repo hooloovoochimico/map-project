@@ -6,8 +6,8 @@ This project uses a Voronoi-style approach on Italy's 110 provincial capitals to
 
 ## Live Demo
 
-- [Interactive Map](https://chemickypes.github.io/map-project/) — toggle between old and new province boundaries, zoom into comuni that change
-- [Stats & Infographic](https://chemickypes.github.io/map-project/infografica.html) — KPIs, top shifts, bar charts of gains/losses
+- [Interactive Map](https://hooloovoochimico.github.io/map-project/) — toggle between old and new province boundaries, zoom into comuni that change
+- [Stats & Infographic](https://hooloovoochimico.github.io/map-project/infografica.html) — KPIs, top shifts, bar charts of gains/losses
 
 ## How It Works
 
@@ -39,7 +39,7 @@ This project uses a Voronoi-style approach on Italy's 110 provincial capitals to
 ## Running Locally
 
 ```bash
-git clone https://github.com/chemickypes/map-project.git
+git clone https://github.com/hooloovoochimico/map-project.git
 cd map-project
 python -m venv .venv
 source .venv/bin/activate
